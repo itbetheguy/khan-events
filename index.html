@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Khan Events × The Chef's Kitchen</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Wedding planning, event décor and full-service catering by the Khan family — Austin, TX. Est. 2013.">
+<meta property="og:title" content="Khan Events × The Chef's Kitchen">
+<meta property="og:description" content="Weddings, nikkahs, graduations & private events in Austin — décor by Nimra Khan, catering by Chef Ashraf Khan.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root{ --maxw:1140px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:"Jost",system-ui,"Segoe UI",sans-serif;font-weight:400;
+    background:var(--bg);color:var(--text);line-height:1.6;
+    transition:background .5s ease,color .5s ease;-webkit-font-smoothing:antialiased;
+  }
+  body[data-world="events"]{
+    --bg:#F7F2EB; --surface:#FFFDF8; --text:#2B2320; --muted:#6E6258;
+    --accent:#B98A3E; --accent-soft:#C4808E;
+    --line:rgba(43,35,32,.18); --line-strong:rgba(43,35,32,.34);
+    --btn-text:#FFFDF8;
+  }
+  body[data-world="catering"]{
+    --bg:#211913; --surface:#2B211A; --text:#F0E7D9; --muted:#B3A38E;
+    --accent:#D96A32; --accent-soft:#B98A3E;
+    --line:rgba(240,231,217,.18); --line-strong:rgba(240,231,217,.38);
+    --btn-text:#211913;
+  }
+  ::selection{background:var(--accent);color:var(--btn-text)}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- header: caption line + two big obvious tabs ---------- */
+  header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s ease}
+  .famline{
+    text-align:center;font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--muted);padding:9px 14px 7px;border-bottom:1px solid var(--line);
+  }
+  .tabs{display:flex;max-width:var(--maxw);margin:0 auto}
+  .tab{
+    flex:1;appearance:none;border:0;cursor:pointer;background:transparent;color:var(--muted);
+    font-family:"Jost",sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    padding:14px 8px;transition:background .3s,color .3s;position:relative;
+  }
+  .tab small{display:block;text-transform:none;letter-spacing:.04em;font-weight:400;font-size:.74rem;opacity:.8;margin-top:1px}
+  .tab[aria-selected="true"]{background:var(--accent);color:var(--btn-text)}
+  .tab[aria-selected="true"] small{opacity:.9}
+  .tab:not([aria-selected="true"]):hover{color:var(--text)}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+  .tab .switchhint{display:none;position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1rem}
+  @media (min-width:720px){ .tab:not([aria-selected="true"]) .switchhint{display:block} }
+
+  /* ---------- shared layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  section{padding:64px 0}
+  .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.08;text-wrap:balance}
+  h1{font-size:clamp(2.5rem,6vw,4.2rem)}
+  h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  h3{font-size:clamp(1.35rem,2.6vw,1.8rem)}
+  .lede{font-size:1.05rem;font-weight:300;color:var(--muted);max-width:34em;margin-top:18px}
+  .world{display:none}
+  .world.on{display:block;animation:worldIn .5s ease both}
+  @keyframes worldIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 52px}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .hero-media{position:relative}
+  .hero-media img,.hero-media video{
+    width:100%;border:1px solid var(--line-strong);padding:10px;background:var(--surface);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.35);
+  }
+  .hero-media video{aspect-ratio:9/13;object-fit:cover}
+  .credit{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:10px;text-align:right}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+  .btn{
+    display:inline-block;background:var(--accent);color:var(--btn-text);
+    font-weight:500;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:15px 30px;text-decoration:none;border:1px solid var(--accent);cursor:pointer;
+    transition:background .25s,color .25s;font-family:"Jost",sans-serif;
+  }
+  .btn:hover{background:transparent;color:var(--text)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* ---------- services ---------- */
+  .svc{border-top:1px solid var(--line)}
+  .svc-grid{display:grid;grid-template-columns:minmax(220px,.8fr) 1.6fr;gap:40px}
+  .svc ul{list-style:none}
+  .svc li{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+  .svc li strong{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:1.3rem}
+  .svc li span{color:var(--muted);font-size:.92rem;font-weight:300;grid-column:1/-1;max-width:44em}
+  .svc li em{font-style:normal;color:var(--accent);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
+
+  /* ---------- gallery groups ---------- */
+  .gal{border-top:1px solid var(--line)}
+  .gal-intro{margin-bottom:8px}
+  .gal-intro p{color:var(--muted);font-weight:300;font-size:.95rem;max-width:40em}
+  .group{margin-top:44px}
+  .group-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line-strong);padding-bottom:10px;margin-bottom:18px}
+  .group-head h3{flex:none}
+  .group-head p{color:var(--muted);font-size:.8rem;font-weight:300;letter-spacing:.06em}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tiles.wide{grid-template-columns:repeat(3,1fr)}
+  .tile{
+    position:relative;border:1px solid var(--line);background:var(--surface);
+    cursor:zoom-in;overflow:hidden;
+  }
+  .tile img,.tile video{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .5s ease}
+  .tiles.wide .tile img,.tiles.wide .tile video{aspect-ratio:4/3}
+  .tile:hover img,.tile:hover video{transform:scale(1.03)}
+  .tile figcaption{
+    display:flex;justify-content:space-between;gap:10px;padding:8px 11px;border-top:1px solid var(--line);
+    font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;
+  }
+  .vbadge{
+    position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;
+    background:rgba(20,14,10,.55);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:.7rem;pointer-events:none;backdrop-filter:blur(4px);
+  }
+  .watch{
+    position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+    background:rgba(20,14,10,.62);color:#F0E7D9;text-decoration:none;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:10px 16px;
+    border:1px solid rgba(240,231,217,.4);backdrop-filter:blur(4px);
+  }
+  .watch:hover{background:rgba(20,14,10,.85)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- kind words ---------- */
+  .kind{border-top:1px solid var(--line)}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
+  .quote{border-left:2px solid var(--accent);padding:6px 0 6px 20px}
+  .quote p{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.28rem;line-height:1.35;font-weight:500}
+  .quote footer{margin-top:10px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .kind .note{margin-top:26px;font-size:.78rem;color:var(--muted);font-weight:300}
+
+  /* ---------- interlink band ---------- */
+  .cross{border-top:1px solid var(--line)}
+  .cross .inner{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;border:1px solid var(--line-strong);padding:40px 44px;background:var(--surface)}
+  .cross h2{margin-bottom:8px}
+  .cross p{color:var(--muted);font-weight:300;max-width:36em}
+  .cross .mini{display:flex;gap:10px}
+  .cross .mini img{width:104px;height:130px;object-fit:cover;border:1px solid var(--line)}
+
+  /* ---------- partners ---------- */
+  .partners{border-top:1px solid var(--line);text-align:center}
+  .partners p.note{color:var(--muted);font-weight:300;margin-bottom:24px}
+  .plist{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 38px}
+  .plist a{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.25rem;font-weight:600;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+  .plist a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---------- inquiry ---------- */
+  .inq{border-top:1px solid var(--line)}
+  .inq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px}
+  .inq aside p{color:var(--muted);font-weight:300;margin-top:14px;max-width:30em}
+  .reach{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+  .reach a{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:.9rem;color:var(--text)}
+  .reach a:hover{color:var(--accent)}
+  .reach .ico{width:34px;height:34px;border:1px solid var(--line-strong);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--accent);overflow:hidden;flex:none}
+  .reach .ico img{width:100%;height:100%;object-fit:cover}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+  .f-full{grid-column:1/-1}
+  label{display:block;font-size:.64rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  input,select,textarea{
+    width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-strong);
+    padding:9px 2px;font-family:"Jost",sans-serif;font-size:1rem;font-weight:300;color:var(--text);border-radius:0;
+  }
+  select option{color:#2B2320;background:#F7F2EB}
+  textarea{min-height:92px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--accent)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{position:relative}
+  .chip input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+  .chip span{display:inline-block;padding:9px 18px;border:1px solid var(--line-strong);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:all .25s;user-select:none}
+  .chip input:checked + span{background:var(--accent);border-color:var(--accent);color:var(--btn-text)}
+  .chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+  .form-note{font-size:.8rem;color:var(--muted);font-weight:300;margin-top:12px}
+  #sendStatus{font-size:.85rem;color:var(--accent);margin-top:10px;min-height:1.2em}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:40px 0 56px}
+  .foot{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:center}
+  .foot .k{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:1.15rem;letter-spacing:.12em}
+  .foot .fine{font-size:.74rem;color:var(--muted)}
+  .foot nav{display:flex;gap:22px;flex-wrap:wrap}
+  .foot nav a{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+  .foot nav a:hover{color:var(--accent)}
+  #shareBtn{cursor:pointer;background:none;border:1px solid var(--line-strong);color:var(--text);padding:10px 20px;font-family:"Jost",sans-serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+  #shareBtn:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- lightbox ---------- */
+  #lb{position:fixed;inset:0;z-index:100;background:rgba(15,11,8,.94);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:26px}
+  #lb.on{display:flex}
+  #lb .lb-media{max-width:min(94vw,880px);max-height:80vh;display:flex;align-items:center;justify-content:center}
+  #lb img,#lb video{max-width:min(94vw,880px);max-height:78vh;object-fit:contain;border:1px solid rgba(255,255,255,.2)}
+  #lb p{color:#EFE6D8;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+  #lbClose{position:absolute;top:16px;right:22px;background:none;border:0;color:#EFE6D8;font-size:2.1rem;cursor:pointer;line-height:1;font-family:Georgia,serif}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){ .tiles{grid-template-columns:repeat(3,1fr)} .quotes{grid-template-columns:1fr 1fr} }
+  @media (max-width:900px){
+    .hero .wrap,.inq-grid,.svc-grid{grid-template-columns:1fr;gap:34px}
+    .cross .inner{grid-template-columns:1fr;padding:30px 24px}
+    section{padding:48px 0}
+    .hero{padding:36px 0}
+  }
+  @media (max-width:680px){
+    .tiles,.tiles.wide{grid-template-columns:repeat(2,1fr)}
+    .quotes{grid-template-columns:1fr}
+    .tab{font-size:.68rem;letter-spacing:.1em;padding:12px 6px}
+    .tab small{font-size:.66rem}
+  }
+  @media (max-width:460px){ form{grid-template-columns:1fr} }
+</style>
+</head>
+<body data-world="events">
+<header>
+  <p class="famline">The Khan Family · Austin, Texas · Est. 2013</p>
+  <div class="tabs" role="tablist" aria-label="Choose a side of the family business">
+    <button class="tab" id="tabEvents" role="tab" aria-selected="true" onclick="setWorld('events')">
+      Khan Events<small>planning &amp; décor by Nimra</small><span class="switchhint">←</span>
+    </button>
+    <button class="tab" id="tabCatering" role="tab" aria-selected="false" onclick="setWorld('catering')">
+      The Chef's Kitchen<small>catering by Ashraf Khan</small><span class="switchhint">→</span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= KHAN EVENTS ================= -->
+<main id="worldEvents" class="world on">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Khan Events · Weddings &amp; celebrations</p>
+        <h1>Your vision,<br>our expertise.</h1>
+        <p class="lede">Wedding planning, event design &amp; décor by Nimra Khan — nikkahs, mehndis, walimas, graduations, and every celebration worth remembering.</p>
+        <div class="cta-row">
+          <a class="btn" href="#inquire">Check your date</a>
+          <button class="btn ghost" onclick="setWorld('catering')">See the catering side</button>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="media/hi/kh-bride.jpg" alt="Bride in silver-embroidered ivory at a Khan Events wedding, florals and hanging crystals in the foreground" width="640" height="427">
+        <p class="credit">Real wedding · photo by ThirdEyeStudio</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc">
+    <div class="wrap svc-grid">
+      <div>
+        <p class="eyebrow">What we do</p>
+        <h2>From the first sketch to the last dance</h2>
+        <p class="lede">One planner, one point of contact — and a family kitchen behind it all.</p>
+      </div>
+      <ul>
+        <li><strong>Full planning &amp; coordination</strong><em>weddings</em><span>Timelines, vendors and day-of direction, so your family is in the photos — not running the show.</span></li>
+        <li><strong>Décor &amp; design</strong><em>signature</em><span>Mandaps, floral backdrops, tablescapes, stage design and welcome signage — built around your colors and your story.</span></li>
+        <li><strong>Nikkah, mehndi &amp; dholki styling</strong><em>traditions</em><span>Marigold garlands to mithai trays — every tradition styled with intention.</span></li>
+        <li><strong>Fruit artistry &amp; grazing tables</strong><em>vital fruits &amp; more</em><span>Carved fruit displays, artisan charcuterie and grazing spreads guests photograph before they touch.</span></li>
+        <li><strong>Content coverage</strong><em>for your socials</em><span>Behind-the-scenes reels captured while the night happens.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gal">
+    <div class="wrap">
+      <div class="gal-intro">
+        <p class="eyebrow">The work, organized</p>
+        <h2>Recent celebrations</h2>
+        <p>Every photo and clip below is from a real Khan family event. Videos play on their own — tap anything to see it big (with sound).</p>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>Real weddings</h3><p>captured with ThirdEyeStudio</p></div>
+        <div class="tiles wide">
+          <figure class="tile reveal" data-cap="The nikkah · Photo"><img src="media/hi/kh-bride.jpg" alt="Bride seated among florals and crystal strands" loading="lazy"><figcaption><span>The nikkah</span><span>Photo</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Golden hour · Photo"><img src="media/hi/kh-couple.jpg" alt="Bride and groom walking a hilltop under a moody sky" loading="lazy"><figcaption><span>Golden hour</span><span>Photo</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Fatima + Soofi · Photo"><img src="media/hi/kh-fatima.jpg" alt="Fatima and Soofi in ivory on a rooftop" loading="lazy"><figcaption><span>Fatima + Soofi</span><span>Photo</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Nepali wedding · Film"><video muted loop playsinline preload="none" poster="media/hi/DbGjbOFxsNn.jpg" aria-label="Nepali wedding with marigold mandap under the oaks"><source data-src="media/video/DbGjbOFxsNn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Nepali wedding</span><span>Film</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>Receptions &amp; venues</h3><p>REN Austin · The Hills CC · The Austonian</p></div>
+        <div class="tiles">
+          <figure class="tile vid reveal" data-cap="REN Austin · Reception"><video muted loop playsinline preload="none" poster="media/hi/DXkvit3DYHA.jpg" aria-label="Reception night at the REN Austin hotel"><source data-src="media/video/DXkvit3DYHA.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>REN Austin</span><span>Reception</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="The Hills CC · Wedding"><video muted loop playsinline preload="none" poster="media/hi/DX-ZFFqt0y6.jpg" aria-label="Wedding at The Hills Country Club"><source data-src="media/video/DX-ZFFqt0y6.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Hills CC</span><span>Wedding</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="The Austonian · Nikkah"><video muted loop playsinline preload="none" poster="media/hi/DX4cRIItp63.jpg" aria-label="Nikkah at The Austonian Club with mithai trays"><source data-src="media/video/DX4cRIItp63.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Austonian</span><span>Nikkah</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="REN Austin · Evening"><video muted loop playsinline preload="none" poster="media/hi/DXkvit3DYHA.jpg" aria-label="Evening celebration styled by Khan Events"><source data-src="media/video/DOJrA-xieb9.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>REN Austin</span><span>Evening</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>Graduations</h3><p>backdrops, cake tables &amp; centerpieces</p></div>
+        <div class="tiles">
+          <figure class="tile vid reveal" data-cap="Her moment · Florals"><video muted loop playsinline preload="none" poster="media/hi/DaX-DuaKtBy.webp" aria-label="Floral graduation backdrop — her cap, her moment"><source data-src="media/video/DaX-DuaKtBy.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Her moment</span><span>Florals</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Saif's grad · Balloon arch"><video muted loop playsinline preload="none" poster="media/hi/DbTbFK_xTz4.jpg" aria-label="Black and gold balloon arch for Saif's graduation"><source data-src="media/video/DbTbFK_xTz4.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Saif's grad</span><span>Balloon arch</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Cake table · UT Austin"><video muted loop playsinline preload="none" poster="media/hi/DbUvVyzOjJi.jpg" aria-label="Longhorn graduation cake on a gold sequin table"><source data-src="media/video/DbUvVyzOjJi.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Cake table</span><span>UT Austin</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Class of 2026 · Tables"><video muted loop playsinline preload="none" poster="media/hi/DZXqyPYOK2H.jpg" aria-label="Class of 2026 glitter centerpiece with roses"><source data-src="media/video/DZXqyPYOK2H.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Class of 2026</span><span>Tables</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>Décor &amp; details</h3><p>the show pieces</p></div>
+        <div class="tiles">
+          <figure class="tile vid reveal" data-cap="Tablescape · Blush"><video muted loop playsinline preload="none" poster="media/hi/DbDrgMIhhEu.jpg" aria-label="Blush tablescape with roses, candles and crystal"><source data-src="media/video/DbDrgMIhhEu.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Tablescape</span><span>Blush</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Signage · Welcome"><video muted loop playsinline preload="none" poster="media/hi/DbJIkArRaG_.jpg" aria-label="Welcome To Our Beginning sign under white wisteria"><source data-src="media/video/DbJIkArRaG_.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Signage</span><span>Welcome</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Mehndi stage · Brights"><video muted loop playsinline preload="none" poster="media/hi/DJCzVzZSNGB.jpg" aria-label="Hot pink and gold bridal chair before a floral wall"><source data-src="media/video/DJCzVzZSNGB.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Mehndi stage</span><span>Brights</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Styling · Details"><video muted loop playsinline preload="none" poster="media/hi/DXdSfBVDcqE.jpg" aria-label="Event styling details by Khan Events"><source data-src="media/video/DXcwaeDDp0m.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Styling</span><span>Details</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>Fruit artistry &amp; sweet tables</h3><p>Vital Fruits &amp; More</p></div>
+        <div class="tiles">
+          <figure class="tile reveal" data-cap="Fruit display · Weddings"><img src="media/hi/C_gDzaMOU1x-1.jpg" alt="Luxury fruit display on gold and crystal stands" loading="lazy"><figcaption><span>Fruit display</span><span>Weddings</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Watermelon cake · Signature"><img src="media/hi/C8WO_OqOY-H-1.jpg" alt="Watermelon cake tower for a graduate" loading="lazy"><figcaption><span>Watermelon cake</span><span>Signature</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Grazing table · Desserts"><img src="media/hi/C3GeNscO6xr-1.jpg" alt="Rustic dessert and grazing table with cakes and candles" loading="lazy"><figcaption><span>Grazing table</span><span>Desserts</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Eid 2024 · Holidays"><img src="media/hi/C6HOleaOHR_-1.jpg" alt="Crescent moon cake for Eid" loading="lazy"><figcaption><span>Eid 2024</span><span>Holidays</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kind">
+    <div class="wrap">
+      <p class="eyebrow">Kind words</p>
+      <h2>From our events</h2>
+      <div class="quotes">
+        <blockquote class="quote"><p>"Love your energy and how you brought the whole nikkah together. Looking forward to working more events with you."</p><footer>@indusoccasions · venue partner</footer></blockquote>
+        <blockquote class="quote"><p>"Love how the different elements come together to create a beautiful scene."</p><footer>@anthonybradlhox.ey</footer></blockquote>
+        <blockquote class="quote"><p>"A great event!"</p><footer>@northpoint_center · venue, Saif's graduation</footer></blockquote>
+      </div>
+      <p class="note">Real comments, word for word, from Instagram on the events above.</p>
+    </div>
+  </section>
+
+  <section class="cross">
+    <div class="wrap">
+      <div class="inner">
+        <div>
+          <p class="eyebrow">One family, both crafts</p>
+          <h2>Décor by Nimra. Dinner by Chef Ashraf.</h2>
+          <p>The room and the menu, planned in the same kitchen-table conversation — that's why it all matches.</p>
+          <div class="cta-row"><button class="btn" onclick="setWorld('catering')">See The Chef's Kitchen</button></div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <img src="media/hi/DcT2PykBfSQ.jpg" alt="">
+          <img src="media/hi/Dbol08NythL.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div class="wrap">
+      <p class="eyebrow">In good company</p>
+      <p class="note">Collaborators you'll see at our events</p>
+      <div class="plist">
+        <a href="https://www.instagram.com/thirdeyestudio_net/" target="_blank" rel="noopener">ThirdEyeStudio</a>
+        <a href="https://www.instagram.com/theaustincakery/" target="_blank" rel="noopener">The Austin Cakery</a>
+        <a href="https://www.instagram.com/zandm_eventsplanning/" target="_blank" rel="noopener">Z&amp;M Celebrations</a>
+        <a href="https://www.instagram.com/amberdesignconcepts/" target="_blank" rel="noopener">Amber Design Concepts</a>
+        <a href="https://www.instagram.com/indusoccasions/" target="_blank" rel="noopener">Indus Occasions</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= CHEF'S KITCHEN ================= -->
+<main id="worldCatering" class="world">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">The Chef's Kitchen by Ashraf Khan · Since 2013</p>
+        <h1>Food is my passion — <em style="font-style:italic">&amp; it shows.</em></h1>
+        <p class="lede">Full-service catering for weddings, graduations and private events across Austin — live tandoor, gold-dome service, and menus built around your guest list. Dreamy. Elegant. Delicious.</p>
+        <div class="cta-row">
+          <a class="btn" href="#inquire">Get a quote</a>
+          <button class="btn ghost" onclick="setWorld('events')">See the décor side</button>
+        </div>
+      </div>
+      <div class="hero-media">
+        <video muted loop playsinline autoplay preload="metadata" poster="media/hi/DQsW8UMgVMD.jpg" aria-label="Gold-dome buffet service set by The Chef's Kitchen" data-keep="1">
+          <source src="media/video/DQsW8UMgVMD.mp4" type="video/mp4">
+        </video>
+        <p class="credit">Gold-dome service · real setup, no staging</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc">
+    <div class="wrap svc-grid">
+      <div>
+        <p class="eyebrow">From the kitchen</p>
+        <h2>"We don't compromise on quantity and quality"</h2>
+        <p class="lede">Chef Ashraf's own rule — every order, every tray.</p>
+      </div>
+      <ul>
+        <li><strong>Wedding &amp; walima service</strong><em>full service</em><span>Buffet or plated, with setup, staffing and the gold-dome presentation the photos love.</span></li>
+        <li><strong>Live BBQ &amp; tandoor</strong><em>over fire</em><span>Tandoori chicken, kebabs and grill favorites cooked live — the aroma is part of the event.</span></li>
+        <li><strong>Biryani &amp; traditional favorites</strong><em>the classics</em><span>Biryani by the tray, curries, and the dishes your elders will grade you on. We pass.</span></li>
+        <li><strong>Desserts &amp; live stations</strong><em>sweet endings</em><span>Shahi tukray, gulab jamun, dessert boards and attended live stations.</span></li>
+        <li><strong>Graduations, birthdays &amp; corporate</strong><em>any occasion</em><span>Customized catering for every occasion, sized from a house party to a full hall.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gal">
+    <div class="wrap">
+      <div class="gal-intro">
+        <p class="eyebrow">Straight from the kitchen's camera</p>
+        <h2>Come hungry, scroll slowly</h2>
+        <p>Only food here — the pretty rooms live on the Khan Events side. Videos play on their own; tap one for sound.</p>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>The food</h3><p>cooked, plated and served by us</p></div>
+        <div class="tiles">
+          <figure class="tile vid reveal" data-cap="Biryani · Signature"><video muted loop playsinline preload="none" poster="media/hi/DcT2PykBfSQ.jpg" aria-label="Saffron-layered chicken biryani in a catering tray"><source data-src="media/video/DcT2PykBfSQ.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Biryani</span><span>Signature</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Live tandoor · BBQ"><video muted loop playsinline preload="none" poster="media/hi/Dbol08NythL.jpg" aria-label="Tandoori chicken roasting over live fire"><source data-src="media/video/Dbol08NythL.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Live tandoor</span><span>BBQ</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Shahi tukray · Dessert"><video muted loop playsinline preload="none" poster="media/hi/DcTqdobBaCn.jpg" aria-label="Shahi tukray topped with almonds and rose petals"><source data-src="media/video/DcTqdobBaCn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Shahi tukray</span><span>Dessert</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Live station · Sweets"><video muted loop playsinline preload="none" poster="media/hi/DPxfabBDTjx.jpg" aria-label="Live dessert station being plated"><source data-src="media/video/DPxfabBDTjx.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Live station</span><span>Sweets</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h3>On location</h3><p>service nights around Austin</p></div>
+        <div class="tiles">
+          <figure class="tile vid reveal" data-cap="Gold dome · Service"><video muted loop playsinline preload="none" poster="media/hi/DQsW8UMgVMD.jpg" aria-label="Row of ornate gold-domed serving stands on a buffet"><source data-src="media/video/DQsW8UMgVMD.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Gold dome</span><span>Service</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="The Austonian · Full service"><video muted loop playsinline preload="none" poster="media/hi/DXjqW5ChBsn.jpg" aria-label="Catering spread at the Austonian — the food stole the show"><source data-src="media/video/DXjqW5ChBsn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Austonian</span><span>Full service</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Private event · Catering"><video muted loop playsinline preload="none" poster="media/hi/DQsW8UMgVMD.jpg" aria-label="Catered private event — guests raved about the menu"><source data-src="media/video/DZIOFDFOPAK.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Private event</span><span>Catering</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kind">
+    <div class="wrap">
+      <p class="eyebrow">Kind words</p>
+      <h2>Guests don't stay quiet about the food</h2>
+      <div class="quotes">
+        <blockquote class="quote"><p>"Super tasty food for our event. Thank you @the_chef_kitchen_by_ashraf!"</p><footer>@reachnida · hosted a graduation</footer></blockquote>
+        <blockquote class="quote"><p>"Your menu and food was so delicious."</p><footer>@minniemotiwala · guest</footer></blockquote>
+        <blockquote class="quote"><p>"Amazing event and excellent food!!"</p><footer>@sheebas3535 · guest</footer></blockquote>
+      </div>
+      <p class="note">Real comments, word for word, from Instagram on the events above.</p>
+    </div>
+  </section>
+
+  <section class="cross">
+    <div class="wrap">
+      <div class="inner">
+        <div>
+          <p class="eyebrow">One family, both crafts</p>
+          <h2>The menu is half the night. Nimra designs the other half.</h2>
+          <p>Add planning, décor, grazing tables and content coverage from Khan Events — one conversation covers the whole celebration.</p>
+          <div class="cta-row"><button class="btn" onclick="setWorld('events')">See Khan Events</button></div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <img src="media/hi/DbGjbOFxsNn.jpg" alt="">
+          <img src="media/hi/DbDrgMIhhEu.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= SHARED: INQUIRY + FOOTER ================= -->
+<section class="inq" id="inquire">
+  <div class="wrap inq-grid">
+    <aside>
+      <p class="eyebrow">Check your date</p>
+      <h2>Tell us about your event</h2>
+      <p>Send the basics and we'll come back with availability, ideas and a quote. Weekends book out first — especially wedding season.</p>
+      <div class="reach">
+        <a href="mailto:khan.nimra@icloud.com"><span class="ico">✉</span> khan.nimra@icloud.com</a>
+        <a href="https://www.instagram.com/khan_events/" target="_blank" rel="noopener"><span class="ico"><img src="media/hi/kprof.jpg" alt=""></span> @khan_events</a>
+        <a href="https://www.instagram.com/the_chef_kitchen_by_ashraf/" target="_blank" rel="noopener"><span class="ico"><img src="media/hi/cprof.jpg" alt=""></span> @the_chef_kitchen_by_ashraf</a>
+        <a href="https://www.facebook.com/ashraf.khan.384488/" target="_blank" rel="noopener"><span class="ico">f</span> Ashraf Khan on Facebook</a>
+        <a href="https://www.facebook.com/fruitbarinaustin" target="_blank" rel="noopener"><span class="ico">f</span> Vital Fruits &amp; More</a>
+      </div>
+    </aside>
+    <div>
+      <form id="inqForm">
+        <div><label for="fName">Your name</label><input id="fName" name="name" autocomplete="name" required></div>
+        <div><label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
+        <div><label for="fDate">Event date</label><input id="fDate" name="date" type="date"></div>
+        <div><label for="fGuests">Guest count</label><input id="fGuests" name="guests" type="number" min="1" placeholder="150"></div>
+        <div class="f-full"><label for="fType">Type of event</label>
+          <select id="fType" name="type">
+            <option>Wedding · Shaadi / Walima</option>
+            <option>Nikkah</option>
+            <option>Mehndi / Dholki</option>
+            <option>Graduation</option>
+            <option>Birthday / Private party</option>
+            <option>Corporate</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="f-full"><label>What do you need?</label>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="need" value="Planning & décor"><span>Planning &amp; décor</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="Catering"><span>Catering</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="Fruit & grazing tables"><span>Fruit &amp; grazing</span></label>
+            <label class="chip"><input type="checkbox" name="need" value="The full celebration"><span>The full celebration</span></label>
+          </div>
+        </div>
+        <div class="f-full"><label for="fMsg">Tell us about it</label><textarea id="fMsg" name="msg" placeholder="Venue, vision, colors, favorite dishes — anything helps."></textarea></div>
+        <div class="f-full">
+          <button class="btn" type="submit">Send inquiry</button>
+          <p class="form-note">This opens your email app with everything already written — just press send. Or DM us on Instagram.</p>
+          <p id="sendStatus" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="k">KHAN EVENTS × THE CHEF'S KITCHEN</p>
+      <p class="fine">One family · Austin, Texas · Est. 2013</p>
+    </div>
+    <nav>
+      <a href="#events" onclick="setWorld('events');return false;">Events</a>
+      <a href="#catering" onclick="setWorld('catering');return false;">Catering</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+    <button id="shareBtn" type="button">Share this page</button>
+  </div>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <button id="lbClose" aria-label="Close">×</button>
+  <div class="lb-media" id="lbMedia"></div>
+  <p id="lbCap"></p>
+</div>
+
+<script>
+  var worlds = { events: document.getElementById('worldEvents'), catering: document.getElementById('worldCatering') };
+  var tabs = { events: document.getElementById('tabEvents'), catering: document.getElementById('tabCatering') };
+
+  function setWorld(w, keepScroll) {
+    if (!worlds[w]) w = 'events';
+    document.body.setAttribute('data-world', w);
+    for (var k in worlds) {
+      worlds[k].classList.toggle('on', k === w);
+      tabs[k].setAttribute('aria-selected', k === w ? 'true' : 'false');
+      if (k !== w) worlds[k].querySelectorAll('video').forEach(function (v) { v.pause(); });
+    }
+    try { history.replaceState(null, '', '#' + w); } catch (e) {}
+    if (!keepScroll) window.scrollTo({ top: 0 });
+    requestAnimationFrame(function () { observeMedia(); });
+  }
+
+  (function () {
+    var h = (location.hash || '').replace('#', '');
+    setWorld(h === 'catering' ? 'catering' : 'events', true);
+  })();
+  window.addEventListener('hashchange', function () {
+    var h = (location.hash || '').replace('#', '');
+    if (h === 'events' || h === 'catering') setWorld(h, true);
+  });
+
+  // lazy video loading + autoplay in view, pause out of view
+  var vio = null, rio = null;
+  function ensureLoaded(v) {
+    var s = v.querySelector('source[data-src]');
+    if (s) { s.src = s.getAttribute('data-src'); s.removeAttribute('data-src'); v.load(); }
+  }
+  function observeMedia() {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      document.querySelectorAll('.world.on video').forEach(function (v) { ensureLoaded(v); if (!reduced) { v.play().catch(function(){}); } });
+      return;
+    }
+    if (!rio) {
+      rio = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rio.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+    }
+    document.querySelectorAll('.reveal:not(.in)').forEach(function (el) { rio.observe(el); });
+    if (!vio) {
+      vio = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          var v = en.target;
+          if (en.isIntersecting) { ensureLoaded(v); if (!reduced) v.play().catch(function(){}); }
+          else if (!v.dataset.keep) { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+    }
+    document.querySelectorAll('.world.on video, .hero-media video').forEach(function (v) { vio.observe(v); });
+  }
+  observeMedia();
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) observeMedia(); });
+  setTimeout(function () {
+    if (!document.querySelector('.reveal.in')) document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }, 2500);
+
+  // hover = make sure it's playing (desktop nicety; autoplay already handles most)
+  document.querySelectorAll('.tile').forEach(function (t) {
+    t.addEventListener('mouseenter', function () {
+      var v = t.querySelector('video');
+      if (v) { ensureLoaded(v); v.play().catch(function(){}); }
+    });
+  });
+
+  // lightbox: photos big, videos big WITH sound
+  var lb = document.getElementById('lb'), lbMedia = document.getElementById('lbMedia'), lbCap = document.getElementById('lbCap');
+  function openLb(node, cap) {
+    lbMedia.innerHTML = '';
+    lbMedia.appendChild(node);
+    lbCap.textContent = cap || '';
+    lb.classList.add('on');
+  }
+  document.querySelectorAll('.tile').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var cap = t.getAttribute('data-cap') || '';
+      var v = t.querySelector('video');
+      if (v) {
+        ensureLoaded(v);
+        var src = v.querySelector('source') ? v.querySelector('source').src : v.src;
+        var big = document.createElement('video');
+        big.src = src; big.controls = true; big.autoplay = true; big.loop = true; big.playsInline = true;
+        openLb(big, cap + ' · sound on');
+      } else {
+        var img = t.querySelector('img');
+        var bigI = document.createElement('img');
+        bigI.src = img.src; bigI.alt = img.alt;
+        openLb(bigI, cap);
+      }
+    });
+  });
+  function closeLb() {
+    lb.classList.remove('on');
+    lbMedia.innerHTML = '';
+  }
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+  // inquiry -> email draft
+  document.getElementById('inqForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var needs = Array.prototype.map.call(f.querySelectorAll('input[name="need"]:checked'), function (c) { return c.value; });
+    var lines = [
+      'Hi Nimra & Chef Ashraf,', '',
+      'I would love to check availability for my event:', '',
+      'Name: ' + (f.name.value || '-'),
+      'Phone: ' + (f.phone.value || '-'),
+      'Event date: ' + (f.date.value || 'flexible'),
+      'Guests: ' + (f.guests.value || '-'),
+      'Type: ' + f.type.value,
+      'Looking for: ' + (needs.length ? needs.join(', ') : 'not sure yet'), '',
+      (f.msg.value ? 'About the event: ' + f.msg.value : ''), '',
+      "Sent from the Khan Events × The Chef's Kitchen website"
+    ];
+    var subject = 'Event inquiry — ' + f.type.value + (f.date.value ? ' on ' + f.date.value : '');
+    window.location.href = 'mailto:khan.nimra@icloud.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    document.getElementById('sendStatus').textContent = 'Your email app should open now — press send there and you\'re done.';
+  });
+
+  // share
+  document.getElementById('shareBtn').addEventListener('click', function () {
+    var data = { title: "Khan Events × The Chef's Kitchen", text: 'Event planning, décor & catering in Austin, TX', url: location.href };
+    if (navigator.share) { navigator.share(data).catch(function () {}); }
+    else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(location.href).then(function () {
+        var b = document.getElementById('shareBtn'); b.textContent = 'Link copied';
+        setTimeout(function () { b.textContent = 'Share this page'; }, 1800);
+      });
+    }
+  });
+</script>
+</body>
+</html>
