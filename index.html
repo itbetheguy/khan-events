@@ -112,14 +112,13 @@
   .group-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line-strong);padding-bottom:10px;margin-bottom:18px}
   .group-head h3{flex:none}
   .group-head p{color:var(--muted);font-size:.8rem;font-weight:300;letter-spacing:.06em}
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .tiles.wide{grid-template-columns:repeat(3,1fr)}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tiles.four{grid-template-columns:repeat(4,1fr)}
   .tile{
     position:relative;border:1px solid var(--line);background:var(--surface);
     cursor:zoom-in;overflow:hidden;
   }
-  .tile img,.tile video{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .5s ease}
-  .tiles.wide .tile img,.tiles.wide .tile video{aspect-ratio:4/3}
+  .tile img,.tile video{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 32%;transition:transform .5s ease}
   .tile:hover img,.tile:hover video{transform:scale(1.03)}
   .tile figcaption{
     display:flex;justify-content:space-between;gap:10px;padding:8px 11px;border-top:1px solid var(--line);
@@ -142,11 +141,21 @@
 
   /* ---------- kind words ---------- */
   .kind{border-top:1px solid var(--line)}
-  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
-  .quote{border-left:2px solid var(--accent);padding:6px 0 6px 20px}
-  .quote p{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.28rem;line-height:1.35;font-weight:500}
-  .quote footer{margin-top:10px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .kind .note{margin-top:26px;font-size:.78rem;color:var(--muted);font-weight:300}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .quote{
+    display:flex;flex-direction:column;background:var(--surface);
+    border:1px solid var(--line);padding:26px 26px 22px;position:relative;
+  }
+  .quote::before{
+    content:"\201C";font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;
+    font-size:2.6rem;line-height:1;color:var(--accent);display:block;margin-bottom:8px;
+  }
+  .quote p{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.24rem;line-height:1.4;font-weight:500}
+  .quote footer{
+    margin-top:auto;padding:16px 0 0;border:0;
+    font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  }
+  .kind .note{margin-top:22px;font-size:.78rem;color:var(--muted);font-weight:300}
 
   /* ---------- interlink band ---------- */
   .cross{border-top:1px solid var(--line)}
@@ -192,7 +201,7 @@
   #sendStatus{font-size:.85rem;color:var(--accent);margin-top:10px;min-height:1.2em}
 
   /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:40px 0 56px}
+  footer.sitefoot{border-top:1px solid var(--line);padding:40px 0 56px}
   .foot{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:center}
   .foot .k{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:1.15rem;letter-spacing:.12em}
   .foot .fine{font-size:.74rem;color:var(--muted)}
@@ -211,7 +220,7 @@
   #lbClose{position:absolute;top:16px;right:22px;background:none;border:0;color:#EFE6D8;font-size:2.1rem;cursor:pointer;line-height:1;font-family:Georgia,serif}
 
   /* ---------- responsive ---------- */
-  @media (max-width:980px){ .tiles{grid-template-columns:repeat(3,1fr)} .quotes{grid-template-columns:1fr 1fr} }
+  @media (max-width:980px){ .tiles.four{grid-template-columns:repeat(3,1fr)} .quotes{grid-template-columns:1fr 1fr} }
   @media (max-width:900px){
     .hero .wrap,.inq-grid,.svc-grid{grid-template-columns:1fr;gap:34px}
     .cross .inner{grid-template-columns:1fr;padding:30px 24px}
@@ -219,7 +228,7 @@
     .hero{padding:36px 0}
   }
   @media (max-width:680px){
-    .tiles,.tiles.wide{grid-template-columns:repeat(2,1fr)}
+    .tiles,.tiles.four{grid-template-columns:repeat(2,1fr)}
     .quotes{grid-template-columns:1fr}
     .tab{font-size:.68rem;letter-spacing:.1em;padding:12px 6px}
     .tab small{font-size:.66rem}
@@ -286,22 +295,14 @@
       </div>
 
       <div class="group">
-        <div class="group-head"><h3>Real weddings</h3><p>captured with ThirdEyeStudio</p></div>
-        <div class="tiles wide">
-          <figure class="tile reveal" data-cap="The nikkah · Photo"><img src="media/hi/kh-bride.jpg" alt="Bride seated among florals and crystal strands" loading="lazy"><figcaption><span>The nikkah</span><span>Photo</span></figcaption></figure>
-          <figure class="tile reveal" data-cap="Golden hour · Photo"><img src="media/hi/kh-couple.jpg" alt="Bride and groom walking a hilltop under a moody sky" loading="lazy"><figcaption><span>Golden hour</span><span>Photo</span></figcaption></figure>
-          <figure class="tile reveal" data-cap="Fatima + Soofi · Photo"><img src="media/hi/kh-fatima.jpg" alt="Fatima and Soofi in ivory on a rooftop" loading="lazy"><figcaption><span>Fatima + Soofi</span><span>Photo</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Nepali wedding · Film"><video muted loop playsinline preload="none" poster="media/hi/DbGjbOFxsNn.jpg" aria-label="Nepali wedding with marigold mandap under the oaks"><source data-src="media/video/DbGjbOFxsNn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Nepali wedding</span><span>Film</span></figcaption></figure>
-        </div>
-      </div>
-
-      <div class="group">
-        <div class="group-head"><h3>Receptions &amp; venues</h3><p>REN Austin · The Hills CC · The Austonian</p></div>
+        <div class="group-head"><h3>Weddings &amp; venues</h3><p>REN Austin · The Hills CC · The Austonian</p></div>
         <div class="tiles">
+          <figure class="tile reveal" data-cap="Golden hour · ThirdEyeStudio"><img src="media/hi/kh-couple.jpg" alt="Bride and groom walking a hilltop under a moody sky" loading="lazy"><figcaption><span>Golden hour</span><span>ThirdEyeStudio</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Nepali wedding · Film"><video muted loop playsinline preload="none" poster="media/hi/DbGjbOFxsNn.jpg" aria-label="Nepali wedding with marigold mandap under the oaks"><source data-src="media/video/DbGjbOFxsNn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Nepali wedding</span><span>Film</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="REN Austin · Reception"><video muted loop playsinline preload="none" poster="media/hi/DXkvit3DYHA.jpg" aria-label="Reception night at the REN Austin hotel"><source data-src="media/video/DXkvit3DYHA.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>REN Austin</span><span>Reception</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="The Hills CC · Wedding"><video muted loop playsinline preload="none" poster="media/hi/DX-ZFFqt0y6.jpg" aria-label="Wedding at The Hills Country Club"><source data-src="media/video/DX-ZFFqt0y6.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Hills CC</span><span>Wedding</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="The Austonian · Nikkah"><video muted loop playsinline preload="none" poster="media/hi/DX4cRIItp63.jpg" aria-label="Nikkah at The Austonian Club with mithai trays"><source data-src="media/video/DX4cRIItp63.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Austonian</span><span>Nikkah</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="REN Austin · Evening"><video muted loop playsinline preload="none" poster="media/hi/DXkvit3DYHA.jpg" aria-label="Evening celebration styled by Khan Events"><source data-src="media/video/DOJrA-xieb9.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>REN Austin</span><span>Evening</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Holiday party · Setup"><img src="media/hi/DXdSfBVDcqE.jpg" alt="Holiday grazing table by a lit window" loading="lazy"><figcaption><span>Holiday party</span><span>Setup</span></figcaption></figure>
         </div>
       </div>
 
@@ -311,23 +312,21 @@
           <figure class="tile vid reveal" data-cap="Her moment · Florals"><video muted loop playsinline preload="none" poster="media/hi/DaX-DuaKtBy.webp" aria-label="Floral graduation backdrop — her cap, her moment"><source data-src="media/video/DaX-DuaKtBy.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Her moment</span><span>Florals</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Saif's grad · Balloon arch"><video muted loop playsinline preload="none" poster="media/hi/DbTbFK_xTz4.jpg" aria-label="Black and gold balloon arch for Saif's graduation"><source data-src="media/video/DbTbFK_xTz4.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Saif's grad</span><span>Balloon arch</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Cake table · UT Austin"><video muted loop playsinline preload="none" poster="media/hi/DbUvVyzOjJi.jpg" aria-label="Longhorn graduation cake on a gold sequin table"><source data-src="media/video/DbUvVyzOjJi.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Cake table</span><span>UT Austin</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Class of 2026 · Tables"><video muted loop playsinline preload="none" poster="media/hi/DZXqyPYOK2H.jpg" aria-label="Class of 2026 glitter centerpiece with roses"><source data-src="media/video/DZXqyPYOK2H.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Class of 2026</span><span>Tables</span></figcaption></figure>
         </div>
       </div>
 
       <div class="group">
         <div class="group-head"><h3>Décor &amp; details</h3><p>the show pieces</p></div>
         <div class="tiles">
-          <figure class="tile vid reveal" data-cap="Tablescape · Blush"><video muted loop playsinline preload="none" poster="media/hi/DbDrgMIhhEu.jpg" aria-label="Blush tablescape with roses, candles and crystal"><source data-src="media/video/DbDrgMIhhEu.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Tablescape</span><span>Blush</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Signage · Welcome"><video muted loop playsinline preload="none" poster="media/hi/DbJIkArRaG_.jpg" aria-label="Welcome To Our Beginning sign under white wisteria"><source data-src="media/video/DbJIkArRaG_.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Signage</span><span>Welcome</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Mehndi stage · Brights"><video muted loop playsinline preload="none" poster="media/hi/DJCzVzZSNGB.jpg" aria-label="Hot pink and gold bridal chair before a floral wall"><source data-src="media/video/DJCzVzZSNGB.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Mehndi stage</span><span>Brights</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Styling · Details"><video muted loop playsinline preload="none" poster="media/hi/DXdSfBVDcqE.jpg" aria-label="Event styling details by Khan Events"><source data-src="media/video/DXcwaeDDp0m.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Styling</span><span>Details</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Mandap · Outdoor"><img src="media/hi/kh-mandap.jpg" alt="Outdoor wooden mandap dressed in marigold garlands" loading="lazy"><figcaption><span>Mandap</span><span>Outdoor</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Tablescape · Blush"><img src="media/hi/kh-tablescape.jpg" alt="Blush tablescape with roses, candles and crystal" loading="lazy"><figcaption><span>Tablescape</span><span>Blush</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Bridal chair · Brights"><img src="media/hi/DJCzVzZSNGB.jpg" alt="Hot pink and gold bridal chair before a floral wall" loading="lazy"><figcaption><span>Bridal chair</span><span>Brights</span></figcaption></figure>
         </div>
       </div>
 
       <div class="group">
         <div class="group-head"><h3>Fruit artistry &amp; sweet tables</h3><p>Vital Fruits &amp; More</p></div>
-        <div class="tiles">
+        <div class="tiles four">
           <figure class="tile reveal" data-cap="Fruit display · Weddings"><img src="media/hi/C_gDzaMOU1x-1.jpg" alt="Luxury fruit display on gold and crystal stands" loading="lazy"><figcaption><span>Fruit display</span><span>Weddings</span></figcaption></figure>
           <figure class="tile reveal" data-cap="Watermelon cake · Signature"><img src="media/hi/C8WO_OqOY-H-1.jpg" alt="Watermelon cake tower for a graduate" loading="lazy"><figcaption><span>Watermelon cake</span><span>Signature</span></figcaption></figure>
           <figure class="tile reveal" data-cap="Grazing table · Desserts"><img src="media/hi/C3GeNscO6xr-1.jpg" alt="Rustic dessert and grazing table with cakes and candles" loading="lazy"><figcaption><span>Grazing table</span><span>Desserts</span></figcaption></figure>
@@ -431,20 +430,11 @@
 
       <div class="group">
         <div class="group-head"><h3>The food</h3><p>cooked, plated and served by us</p></div>
-        <div class="tiles">
+        <div class="tiles four">
           <figure class="tile vid reveal" data-cap="Biryani · Signature"><video muted loop playsinline preload="none" poster="media/hi/DcT2PykBfSQ.jpg" aria-label="Saffron-layered chicken biryani in a catering tray"><source data-src="media/video/DcT2PykBfSQ.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Biryani</span><span>Signature</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Live tandoor · BBQ"><video muted loop playsinline preload="none" poster="media/hi/Dbol08NythL.jpg" aria-label="Tandoori chicken roasting over live fire"><source data-src="media/video/Dbol08NythL.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Live tandoor</span><span>BBQ</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Shahi tukray · Dessert"><video muted loop playsinline preload="none" poster="media/hi/DcTqdobBaCn.jpg" aria-label="Shahi tukray topped with almonds and rose petals"><source data-src="media/video/DcTqdobBaCn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Shahi tukray</span><span>Dessert</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Live station · Sweets"><video muted loop playsinline preload="none" poster="media/hi/DPxfabBDTjx.jpg" aria-label="Live dessert station being plated"><source data-src="media/video/DPxfabBDTjx.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Live station</span><span>Sweets</span></figcaption></figure>
-        </div>
-      </div>
-
-      <div class="group">
-        <div class="group-head"><h3>On location</h3><p>service nights around Austin</p></div>
-        <div class="tiles">
-          <figure class="tile vid reveal" data-cap="Gold dome · Service"><video muted loop playsinline preload="none" poster="media/hi/DQsW8UMgVMD.jpg" aria-label="Row of ornate gold-domed serving stands on a buffet"><source data-src="media/video/DQsW8UMgVMD.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Gold dome</span><span>Service</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="The Austonian · Full service"><video muted loop playsinline preload="none" poster="media/hi/DXjqW5ChBsn.jpg" aria-label="Catering spread at the Austonian — the food stole the show"><source data-src="media/video/DXjqW5ChBsn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Austonian</span><span>Full service</span></figcaption></figure>
-          <figure class="tile vid reveal" data-cap="Private event · Catering"><video muted loop playsinline preload="none" poster="media/hi/DQsW8UMgVMD.jpg" aria-label="Catered private event — guests raved about the menu"><source data-src="media/video/DZIOFDFOPAK.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Private event</span><span>Catering</span></figcaption></figure>
         </div>
       </div>
     </div>
@@ -474,7 +464,7 @@
         </div>
         <div class="mini" aria-hidden="true">
           <img src="media/hi/DbGjbOFxsNn.jpg" alt="">
-          <img src="media/hi/DbDrgMIhhEu.jpg" alt="">
+          <img src="media/hi/kh-tablescape.jpg" alt="">
         </div>
       </div>
     </div>
@@ -532,7 +522,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="sitefoot">
   <div class="wrap foot">
     <div>
       <p class="k">KHAN EVENTS × THE CHEF'S KITCHEN</p>
