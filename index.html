@@ -114,6 +114,8 @@
   .group-head p{color:var(--muted);font-size:.8rem;font-weight:300;letter-spacing:.06em}
   .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .tiles.four{grid-template-columns:repeat(4,1fr)}
+  .tiles.duo{grid-template-columns:repeat(2,1fr);gap:20px}
+  .tiles.duo .tile img{aspect-ratio:3/2;object-position:50% 45%}
   .tile{
     position:relative;border:1px solid var(--line);background:var(--surface);
     cursor:zoom-in;overflow:hidden;
@@ -229,6 +231,7 @@
   }
   @media (max-width:680px){
     .tiles,.tiles.four{grid-template-columns:repeat(2,1fr)}
+    .tiles.duo{grid-template-columns:1fr}
     .quotes{grid-template-columns:1fr}
     .tab{font-size:.68rem;letter-spacing:.1em;padding:12px 6px}
     .tab small{font-size:.66rem}
@@ -263,8 +266,10 @@
         </div>
       </div>
       <div class="hero-media">
-        <img src="media/hi/kh-bride.jpg" alt="Bride in silver-embroidered ivory at a Khan Events wedding, florals and hanging crystals in the foreground" width="640" height="427">
-        <p class="credit">Real wedding · photo by ThirdEyeStudio</p>
+        <video muted loop playsinline autoplay preload="metadata" poster="media/hi/kh-hall.jpg" aria-label="A Khan Events wedding day — venue, tables and dessert service" data-keep="1">
+          <source src="media/video/DbDrgMIhhEu.mp4" type="video/mp4">
+        </video>
+        <p class="credit">A real Khan Events wedding day</p>
       </div>
     </div>
   </section>
@@ -295,13 +300,21 @@
       </div>
 
       <div class="group">
+        <div class="group-head"><h3>From our weddings</h3><p>photographed by ThirdEyeStudio</p></div>
+        <div class="tiles duo">
+          <figure class="tile reveal" data-cap="The nikkah · ThirdEyeStudio"><img src="media/hi/kh-bride.jpg" alt="Bride in silver-embroidered ivory, florals and hanging crystals in the foreground" loading="lazy"><figcaption><span>The nikkah</span><span>ThirdEyeStudio</span></figcaption></figure>
+          <figure class="tile reveal" data-cap="Golden hour · ThirdEyeStudio"><img src="media/hi/kh-couple.jpg" alt="Bride and groom walking a hilltop under a moody sky" loading="lazy"><figcaption><span>Golden hour</span><span>ThirdEyeStudio</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
         <div class="group-head"><h3>Weddings &amp; venues</h3><p>REN Austin · The Hills CC · The Austonian</p></div>
         <div class="tiles">
-          <figure class="tile reveal" data-cap="Golden hour · ThirdEyeStudio"><img src="media/hi/kh-couple.jpg" alt="Bride and groom walking a hilltop under a moody sky" loading="lazy"><figcaption><span>Golden hour</span><span>ThirdEyeStudio</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="Nepali wedding · Film"><video muted loop playsinline preload="none" poster="media/hi/DbGjbOFxsNn.jpg" aria-label="Nepali wedding with marigold mandap under the oaks"><source data-src="media/video/DbGjbOFxsNn.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Nepali wedding</span><span>Film</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="REN Austin · Reception"><video muted loop playsinline preload="none" poster="media/hi/DXkvit3DYHA.jpg" aria-label="Reception night at the REN Austin hotel"><source data-src="media/video/DXkvit3DYHA.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>REN Austin</span><span>Reception</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="The Hills CC · Wedding"><video muted loop playsinline preload="none" poster="media/hi/DX-ZFFqt0y6.jpg" aria-label="Wedding at The Hills Country Club"><source data-src="media/video/DX-ZFFqt0y6.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Hills CC</span><span>Wedding</span></figcaption></figure>
           <figure class="tile vid reveal" data-cap="The Austonian · Nikkah"><video muted loop playsinline preload="none" poster="media/hi/DX4cRIItp63.jpg" aria-label="Nikkah at The Austonian Club with mithai trays"><source data-src="media/video/DX4cRIItp63.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>The Austonian</span><span>Nikkah</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Wedding recap · Red roses"><video muted loop playsinline preload="none" poster="media/hi/kh-rose.jpg" aria-label="Red-rose wedding recap — entrance walkway, favors and thank-you"><source data-src="media/video/DXcwaeDDp0m.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Wedding recap</span><span>Red roses</span></figcaption></figure>
           <figure class="tile reveal" data-cap="Holiday party · Setup"><img src="media/hi/DXdSfBVDcqE.jpg" alt="Holiday grazing table by a lit window" loading="lazy"><figcaption><span>Holiday party</span><span>Setup</span></figcaption></figure>
         </div>
       </div>
@@ -319,8 +332,8 @@
         <div class="group-head"><h3>Décor &amp; details</h3><p>the show pieces</p></div>
         <div class="tiles">
           <figure class="tile reveal" data-cap="Mandap · Outdoor"><img src="media/hi/kh-mandap.jpg" alt="Outdoor wooden mandap dressed in marigold garlands" loading="lazy"><figcaption><span>Mandap</span><span>Outdoor</span></figcaption></figure>
+          <figure class="tile vid reveal" data-cap="Mehndi stage · + the spread"><video muted loop playsinline preload="none" poster="media/hi/DJCzVzZSNGB.jpg" aria-label="Mehndi stage in pink and gold, then the night's spread"><source data-src="media/video/DJCzVzZSNGB.mp4" type="video/mp4"></video><span class="vbadge" aria-hidden="true">▶</span><figcaption><span>Mehndi stage</span><span>+ the spread</span></figcaption></figure>
           <figure class="tile reveal" data-cap="Tablescape · Blush"><img src="media/hi/kh-tablescape.jpg" alt="Blush tablescape with roses, candles and crystal" loading="lazy"><figcaption><span>Tablescape</span><span>Blush</span></figcaption></figure>
-          <figure class="tile reveal" data-cap="Bridal chair · Brights"><img src="media/hi/DJCzVzZSNGB.jpg" alt="Hot pink and gold bridal chair before a floral wall" loading="lazy"><figcaption><span>Bridal chair</span><span>Brights</span></figcaption></figure>
         </div>
       </div>
 
