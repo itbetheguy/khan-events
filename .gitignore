@@ -4,3 +4,5 @@ template.html
 build.py
 artifact.html
 CLAUDE.md
+.venv/
+compress.py
